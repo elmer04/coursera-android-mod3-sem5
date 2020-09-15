@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cv_pet"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="@dimen/activity_margin_bottom"
+    card_view:cardCornerRadius="@dimen/corner_radius_cv"
+    app:cardUseCompadPadding="true">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imgFoto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/pet1" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/boneblack"
+                android:background="@drawable/boneblack" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvNombre"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/boneblack"
+                android:text="@string/nombre"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvRating"
+                android:layout_toLeftOf="@+id/boneyellow"
+                android:layout_centerVertical="true"
+                android:text="@string/rating"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/boneyellow"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/boneyellow" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

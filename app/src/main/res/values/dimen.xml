@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="elevacion_actionbar">24dp</dimen>
+    <dimen name="activity_margin_bottom">16dp</dimen>
+    <dimen name="corner_radius_cv">4dp</dimen>
+    <dimen name="nombre_cv">20sp</dimen>
+    <dimen name="elevation">24dp</dimen>
+    <dimen name="marginFlt">20dp</dimen>
+    <dimen name="elevationFlt">10dp</dimen>
+</resources>

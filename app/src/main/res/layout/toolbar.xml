@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.appbar.MaterialToolbar android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:elevation="@dimen/elevation"
+    android:background="@color/colorPrimary"
+    android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+    app:navigationIcon="@drawable/paw"
+    app:title="@string/app_name"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+</com.google.android.material.appbar.MaterialToolbar>
