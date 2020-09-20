@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FavoritePet">
+        <activity android:name=".FavoritePet"
             android:parentActivityName=".MainActivity">
 
             <!-- Soporte para versiones 4.0 o menores -->
