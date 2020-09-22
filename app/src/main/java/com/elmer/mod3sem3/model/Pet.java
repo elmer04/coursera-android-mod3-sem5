@@ -1,4 +1,4 @@
-package com.elmer.mod3sem3;
+package com.elmer.mod3sem3.model;
 
 public class Pet {
     private int foto;

@@ -7,4 +7,6 @@
     <dimen name="elevation">24dp</dimen>
     <dimen name="marginFlt">20dp</dimen>
     <dimen name="elevationFlt">10dp</dimen>
+
+    <dimen name="bio">50sp</dimen>
 </resources>

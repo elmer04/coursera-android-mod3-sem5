@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_favorite"
+        android:icon="@drawable/star5"
+        app:showAsAction="always"
+        android:title="@string/favorite"
+        android:orderInCategory="100"/>
+
+    <item
+        android:id="@+id/mContacto"
+        android:title="@string/mContacto"
+        android:orderInCategory="101" />
+
+    <item
+        android:id="@+id/mAcerca"
+        android:title="@string/mAcerca"
+        android:orderInCategory="102" />
+
+</menu>

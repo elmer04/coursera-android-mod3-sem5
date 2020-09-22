@@ -2,36 +2,45 @@ package com.elmer.mod3sem3;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.SearchView;
 import android.widget.Toast;
 
+import com.elmer.mod3sem3.adapter.PageAdapter;
+import com.elmer.mod3sem3.fragment.PerfilFragment;
+import com.elmer.mod3sem3.fragment.RecyclerViewFragment;
+import com.elmer.mod3sem3.opciones.AcercaMenu;
+import com.elmer.mod3sem3.opciones.ContactoMenu;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    List<Pet> pets;
-    private RecyclerView listPets;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        MaterialToolbar miActionBar = findViewById(R.id.miActionBar);
-        setSupportActionBar(miActionBar);
+        MaterialToolbar toolbar = findViewById(R.id.miActionBar);
+        setSupportActionBar(toolbar);
+
+        tabLayout = findViewById(R.id.tabLayout);
+        viewPager = findViewById(R.id.viewPayer);
+
+        setUpViewPager();
 
         FloatingActionButton fltBtn = findViewById(R.id.fltBtn);
         fltBtn.setOnClickListener(new View.OnClickListener() {
@@ -41,56 +50,50 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        inicializarListaPets();
-
-        listPets = findViewById(R.id.rvPets);
-
-        LinearLayoutManager llm =new LinearLayoutManager(this);
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
-
-        listPets.setLayoutManager(llm);
-
-        inicializarAdaptador();
-
-    }
-
-    public void inicializarAdaptador() {
-        PetAdaptador adaptador = new PetAdaptador(pets, this);
-        listPets.setAdapter(adaptador);
-    }
-
-    public void inicializarListaPets() {
-        pets = new ArrayList<>();
-
-        pets.add(new Pet(R.drawable.pet1, "mascota 1", 2));
-        pets.add(new Pet(R.drawable.pet1, "mascota 2", 2));
-        pets.add(new Pet(R.drawable.pet1, "mascota 3", 2));
-        pets.add(new Pet(R.drawable.pet1, "mascota 4", 2));
-        pets.add(new Pet(R.drawable.pet1, "mascota 5", 2));
-        pets.add(new Pet(R.drawable.pet1, "mascota 6", 2));
-        pets.add(new Pet(R.drawable.pet1, "mascota 7", 2));
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()) {
             case R.id.action_favorite:
-                Intent intent =new Intent(this, FavoritePet.class);
-                startActivity(intent);
-                return true;
+                Intent intent1 = new Intent(this, FavoritePet.class);
+                startActivity(intent1);
+                break;
 
-            default:
-                return super.onOptionsItemSelected(item);
+            case R.id.mContacto:
+                Intent intent2 = new Intent(this, ContactoMenu.class);
+                startActivity(intent2);
+                break;
+
+            case R.id.mAcerca:
+                Intent intent3 = new Intent(this, AcercaMenu.class);
+                startActivity(intent3);
+                break;
         }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.tool_bar, menu);
+        getMenuInflater().inflate(R.menu.menu_opciones, menu);
+        return true;
+    }
 
-        MenuItem item = menu.findItem(R.id.action_favorite);
-        SearchView searchView = (SearchView) item.getActionView();
+    private List<Fragment> agregarFragments() {
+        List<Fragment> fragments= new ArrayList<>();
 
-        return super.onCreateOptionsMenu(menu);
+        fragments.add(new RecyclerViewFragment());
+        fragments.add(new PerfilFragment());
+
+        return fragments;
+    }
+
+    private void setUpViewPager() {
+        viewPager.setAdapter(new PageAdapter(getSupportFragmentManager(), agregarFragments()));
+        tabLayout.setupWithViewPager(viewPager);
+
+        tabLayout.getTabAt(0).setIcon(R.drawable.ic_home);
+        tabLayout.getTabAt(1).setIcon(R.drawable.ic_pets);
     }
 }
