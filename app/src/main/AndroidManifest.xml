@@ -16,7 +16,7 @@
         <activity android:name=".opciones.ContactoMenu"
             android:parentActivityName=".MainActivity"/>
         <activity
-            android:name=".FavoritePet"
+            android:name=".fragment.FavoritePet"
             android:parentActivityName=".MainActivity">
 
             <!-- Soporte para versiones 4.0 o menores -->

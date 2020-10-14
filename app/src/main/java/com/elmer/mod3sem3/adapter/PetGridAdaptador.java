@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.elmer.mod3sem3.R;
-import com.elmer.mod3sem3.model.Pet;
+import com.elmer.mod3sem3.pojo.Pet;
 import com.google.android.material.textview.MaterialTextView;
 
 import java.util.List;

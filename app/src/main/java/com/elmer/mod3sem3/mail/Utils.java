@@ -1,4 +1,4 @@
-package com.elmer.mod3sem3;
+package com.elmer.mod3sem3.mail;
 
 public class Utils {
 

@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.elmer.mod3sem3.fragment.FavoritePet;
 import com.elmer.mod3sem3.adapter.PageAdapter;
 import com.elmer.mod3sem3.fragment.PerfilFragment;
 import com.elmer.mod3sem3.fragment.RecyclerViewFragment;

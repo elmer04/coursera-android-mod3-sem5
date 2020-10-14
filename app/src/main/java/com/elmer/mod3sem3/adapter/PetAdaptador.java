@@ -1,6 +1,7 @@
 package com.elmer.mod3sem3.adapter;
 
 import android.app.Activity;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,9 +9,11 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.elmer.mod3sem3.model.Pet;
+import com.elmer.mod3sem3.bd.ConstructorMascotas;
+import com.elmer.mod3sem3.pojo.Pet;
 import com.elmer.mod3sem3.R;
 import com.google.android.material.textview.MaterialTextView;
 
@@ -35,15 +38,20 @@ public class PetAdaptador extends RecyclerView.Adapter<PetAdaptador.PetViewHolde
 
     @Override
     public void onBindViewHolder(@NonNull PetViewHolder holder, final int position) {
+        ConstructorMascotas constructorMascotas = new ConstructorMascotas(activity);
+
         final Pet pet = pets.get(position);
-        final int rating = pet.getRating();
+        final int rating = constructorMascotas.obtenerRatingPet(pet);
         holder.imgFoto.setImageResource(pet.getFoto());
         holder.tvNombre.setText(pet.getNombre());
         holder.tvRating.setText(String.valueOf(rating));
 
         holder.boneblack.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
+                ConstructorMascotas cm = new ConstructorMascotas(activity);
+                cm.darRatingMascota(pet);
                 pet.setRating(rating+1);
                 notifyDataSetChanged();
             }

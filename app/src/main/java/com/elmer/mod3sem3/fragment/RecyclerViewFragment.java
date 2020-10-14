@@ -12,51 +12,45 @@ import android.view.ViewGroup;
 
 import com.elmer.mod3sem3.R;
 import com.elmer.mod3sem3.adapter.PetAdaptador;
-import com.elmer.mod3sem3.model.Pet;
+import com.elmer.mod3sem3.pojo.Pet;
+import com.elmer.mod3sem3.presentador.IRecyclerViewFragmentPresenter;
+import com.elmer.mod3sem3.presentador.RecyclerViewFragmentPresenter;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class RecyclerViewFragment extends Fragment {
+public class RecyclerViewFragment extends Fragment implements IRecyclerViewFragmentView {
 
-    List<Pet> pets;
     private RecyclerView listPets;
+    private IRecyclerViewFragmentPresenter presenter;
 
-    public RecyclerViewFragment() {
-        // Required empty public constructor
-    }
+    public RecyclerViewFragment() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         View v = inflater.inflate(R.layout.fragment_recycler_view, container, false);
 
         listPets = v.findViewById(R.id.rvPets);
+        presenter = new RecyclerViewFragmentPresenter(this, getContext());
 
-        LinearLayoutManager llm =new LinearLayoutManager(getActivity());
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
-        listPets.setLayoutManager(llm);
-
-        inicializarListaPets();
-        inicializarAdaptador();
         return v;
     }
 
-    public void inicializarAdaptador() {
-        PetAdaptador adaptador = new PetAdaptador(pets, getActivity());
-        listPets.setAdapter(adaptador);
+    @Override
+    public void generarLinearLayoutVertivcal() {
+        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        listPets.setLayoutManager(llm);
     }
 
-    public void inicializarListaPets() {
-        pets = new ArrayList<>();
+    @Override
+    public PetAdaptador crearAdaptador(List<Pet> pets) {
+        return new PetAdaptador(pets, getActivity());
+    }
 
-        pets.add(new Pet(R.drawable.pet1, "mascota 1", 2));
-        pets.add(new Pet(R.drawable.pet1, "mascota 2", 2));
-        pets.add(new Pet(R.drawable.pet1, "mascota 3", 2));
-        pets.add(new Pet(R.drawable.pet1, "mascota 4", 2));
-        pets.add(new Pet(R.drawable.pet1, "mascota 5", 2));
-        pets.add(new Pet(R.drawable.pet1, "mascota 6", 2));
-        pets.add(new Pet(R.drawable.pet1, "mascota 7", 2));
+    @Override
+    public void inicializarAdaptadorRV(PetAdaptador adaptador) {
+        listPets.setAdapter(adaptador);
     }
 }

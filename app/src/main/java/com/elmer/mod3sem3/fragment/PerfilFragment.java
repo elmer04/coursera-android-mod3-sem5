@@ -9,11 +9,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import com.elmer.mod3sem3.R;
 import com.elmer.mod3sem3.adapter.PetGridAdaptador;
-import com.elmer.mod3sem3.model.Pet;
+import com.elmer.mod3sem3.pojo.Pet;
 import com.google.android.material.textview.MaterialTextView;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
@@ -46,7 +45,7 @@ public class PerfilFragment extends Fragment {
 
         listPets = v.findViewById(R.id.rvPetsGrid);
 
-        GridLayoutManager glm = new GridLayoutManager(getActivity(), 2);
+        GridLayoutManager glm = new GridLayoutManager(getActivity(), 3);
         listPets.setLayoutManager(glm);
 
         inicializarListaPets();
